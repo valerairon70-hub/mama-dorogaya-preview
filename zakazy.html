@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Мама дорогая · заказы</title>
+<script>
+(function(){var end=new Date('2026-10-17T23:59:00+03:00').getTime();if(Date.now()<=end)return;
+document.documentElement.innerHTML='<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Предпросмотр закрыт</title></head><body style="margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#F5EFE3;font-family:Arial,sans-serif;color:#241C16;text-align:center;padding:24px"><div><p style="font-size:22px;font-weight:700;color:#B21D63;margin:0 0 10px">МАМА ДОРОГАЯ</p><p style="font-size:18px;margin:0 0 8px">Срок предпросмотра истёк</p><p style="color:#8C7C68;margin:0">Новую ссылку пришлёт Валерий: WhatsApp +7 962 744-57-58</p></div></body>';})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   КП «МИНДАЛЬ» — коммерческое предложение
+   Переиспользует токены и шрифты демо-лендинга для узнаваемости,
+   но трактовка документная: одна колонка, без hero, таблица
+   пакетов и нумерованный план — реальная последовательность шагов.
+   ============================================================ */
+:root{
+  --paper:#F5EFE3;
+  --card:#FBF7EC;
+  --ink:#241C16;
+  --ink-soft:#574B3E;
+  --ink-mute:#8C7C68;
+  --honey:#B27C2C;
+  --honey-deep:#8F6115;
+  --pom:#8C2B33;
+  --pom-deep:#722128;
+  --sage:#5C6A49;
+  --line:rgba(36,28,22,.14);
+  --line-strong:rgba(36,28,22,.28);
+  --font-display:"Fraunces",Georgia,"Times New Roman",serif;
+  --font-body:"Hanken Grotesk","Helvetica Neue",Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{
+  margin:0;background:var(--paper);color:var(--ink-soft);
+  font-family:var(--font-body);font-size:16px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-family:var(--font-display);color:var(--ink);font-weight:500;line-height:1.12;letter-spacing:-.015em;margin:0;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+a{color:var(--honey-deep)}
+::selection{background:var(--honey);color:#fff}
+:focus-visible{outline:2px solid var(--honey-deep);outline-offset:3px}
+
+.wrap{max-width:760px;margin-inline:auto;padding:clamp(28px,6vw,64px) clamp(20px,4.5vw,32px) 90px}
+
+.eyebrow{
+  font-family:var(--font-body);font-weight:600;font-size:.72rem;
+  text-transform:uppercase;letter-spacing:.22em;color:var(--honey-deep);
+  display:inline-flex;align-items:center;gap:.6em;
+}
+.eyebrow svg{width:14px;height:14px;flex:none}
+
+/* ---------- header ---------- */
+header.doc{border-bottom:1px solid var(--line-strong);padding-bottom:30px;margin-bottom:44px}
+header.doc h1{font-size:clamp(1.95rem,4vw,2.65rem);margin-top:12px}
+.doc-meta{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:22px;font-size:.86rem;color:var(--ink-mute)}
+.doc-meta b{color:var(--ink);font-weight:600}
+
+/* ---------- sections ---------- */
+section{margin-bottom:52px}
+section h2{font-size:1.55rem;margin-bottom:15px}
+section>p{color:var(--ink-soft);max-width:64ch}
+section>p+p{margin-top:12px}
+
+/* ---------- stat grid ---------- */
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:22px}
+.stat{background:var(--card);padding:20px 16px}
+.stat b{display:block;font-family:var(--font-display);font-size:1.55rem;color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums;line-height:1.1}
+.stat span{display:block;margin-top:6px;font-size:.8rem;color:var(--ink-mute);line-height:1.4}
+@media (max-width:640px){.stat-grid{grid-template-columns:1fr 1fr}}
+
+/* ---------- callout (demo) ---------- */
+.callout{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:26px;margin-top:18px}
+.callout>p.eyebrow{margin-bottom:6px}
+.callout>p{color:var(--ink-soft)}
+a.demo-link{
+  display:inline-flex;align-items:center;gap:8px;
+  font-weight:600;font-size:.86rem;letter-spacing:.01em;
+  color:#F7EEDF;background:var(--pom);border:1px solid var(--pom);
+  padding:.8em 1.4em;border-radius:999px;text-decoration:none;
+  margin-top:16px;transition:transform .18s ease,box-shadow .2s ease;
+}
+a.demo-link:hover{transform:translateY(-2px);box-shadow:0 12px 26px -12px rgba(114,33,40,.5)}
+.feature-list{list-style:none;margin:20px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px 22px}
+.feature-list li{font-size:.9rem;color:var(--ink-soft);display:flex;gap:9px;align-items:baseline}
+.feature-list li::before{content:"—";color:var(--honey-deep);flex-shrink:0}
+@media (max-width:560px){.feature-list{grid-template-columns:1fr}}
+
+/* ---------- packages table ---------- */
+.table-scroll{overflow-x:auto;margin-top:22px}
+table.packages{width:100%;border-collapse:collapse;font-size:.88rem;min-width:560px}
+table.packages th,table.packages td{padding:15px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+table.packages th{font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:.7rem;color:var(--honey-deep)}
+table.packages td:first-child,table.packages th:first-child{color:var(--ink);font-weight:600}
+table.packages .price{font-variant-numeric:tabular-nums;color:var(--ink);white-space:nowrap;font-family:var(--font-display);font-size:1.02rem}
+table.packages tr.recommended td{background:color-mix(in srgb,var(--honey) 10%,transparent)}
+.tag-rec{display:inline-block;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#231a10;background:var(--honey);padding:2px 9px;border-radius:999px;margin-left:8px;vertical-align:middle}
+.note{font-size:.82rem;color:var(--ink-mute);margin-top:16px}
+@media (max-width:640px){
+  table.packages,table.packages thead,table.packages tbody,table.packages th,table.packages td,table.packages tr{display:block}
+  table.packages thead{display:none}
+  table.packages{min-width:0}
+  .table-scroll{overflow-x:visible}
+  table.packages tr{border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:12px}
+  table.packages tr.recommended{border-color:var(--honey)}
+  table.packages td{border:none;padding:6px 0}
+  table.packages td[data-label]::before{content:attr(data-label);display:block;font-size:.66rem;text-transform:uppercase;letter-spacing:.08em;color:var(--honey-deep);font-weight:600;margin-bottom:3px}
+}
+
+/* ---------- included checklist ---------- */
+.assure{list-style:none;display:grid;gap:12px;margin:20px 0 0;padding:0}
+.assure li{display:flex;gap:11px;font-size:.92rem;color:var(--ink-soft)}
+.assure svg{width:16px;height:16px;color:var(--honey);flex:none;margin-top:5px}
+
+/* ---------- timeline ---------- */
+.timeline{list-style:none;margin:22px 0 0;padding:0;counter-reset:step}
+.timeline li{counter-increment:step;display:flex;gap:18px;padding:17px 0;border-bottom:1px dashed var(--line-strong)}
+.timeline li:last-child{border-bottom:none}
+.timeline li::before{
+  content:counter(step);font-family:var(--font-display);font-style:italic;font-size:1.15rem;color:var(--honey-deep);
+  width:34px;height:34px;border:1px solid var(--line-strong);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--card);
+}
+.timeline .step-title{font-weight:600;color:var(--ink)}
+.timeline .step-time{font-size:.78rem;color:var(--honey-deep);margin-top:2px;font-weight:600}
+.timeline .step-desc{font-size:.88rem;color:var(--ink-mute);margin-top:4px}
+
+/* ---------- cta ---------- */
+.cta-box{background:var(--ink);color:#D8CDBC;border-radius:14px;padding:32px 28px;text-align:center}
+.cta-box h2{color:#F5EFE3;font-size:1.45rem}
+.cta-box p{color:#B7AB99;margin-top:10px;max-width:46ch;margin-inline:auto}
+.cta-box a{
+  display:inline-flex;align-items:center;gap:8px;margin-top:20px;
+  font-weight:600;font-size:.9rem;color:#231a10;background:var(--honey);
+  padding:.85em 1.6em;border-radius:999px;text-decoration:none;
+  transition:transform .18s ease;
+}
+.cta-box a:hover{transform:translateY(-2px)}
+
+footer.doc{margin-top:52px;padding-top:22px;border-top:1px solid var(--line);font-size:.78rem;color:var(--ink-mute);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* ---------- v2 additions ---------- */
+.sel{color:var(--ink);font-weight:600;user-select:all}
+h3.sub{font-family:var(--font-display);font-size:1.15rem;color:var(--ink);font-weight:500;margin-top:32px}
+table.calc{min-width:0}
+table.calc tr.total td{font-weight:600;color:var(--ink);border-top:1px solid var(--line-strong)}
+table.packages td.yes{color:var(--sage);font-weight:600}
+table.cmp td:first-child{color:var(--ink)}
+.assure li span b{color:var(--ink)}
+.offer{background:var(--card);border:2px solid var(--honey);border-radius:14px;padding:28px 26px;display:grid;gap:14px}
+.offer h2{font-size:1.55rem}
+.pay{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pay div{background:var(--paper);border-radius:10px;padding:16px;display:grid;gap:6px}
+.pay b{font-family:var(--font-display);font-size:1.6rem;color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}
+.pay span{font-size:.86rem;color:var(--ink-soft)}
+.pay em{font-style:normal;font-weight:600;color:var(--pom)}
+@media (max-width:560px){.pay{grid-template-columns:1fr}}
+.stat-grid.three{grid-template-columns:repeat(3,1fr)}
+@media (max-width:640px){.stat-grid.three{grid-template-columns:1fr}}
+.cta-box .phone{font-family:var(--font-display);font-size:1.5rem;color:#F5EFE3;margin-top:18px;user-select:all}
+
+/* ---------- flow ---------- */
+.flow{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:0}
+.flow li{display:grid;grid-template-columns:40px 1fr;gap:16px;position:relative;padding-bottom:22px}
+.flow li:not(:last-child)::after{content:"";position:absolute;left:19px;top:40px;bottom:2px;width:2px;background:repeating-linear-gradient(var(--line-strong) 0 5px,transparent 5px 10px)}
+.flow .n{width:40px;height:40px;border-radius:50%;background:var(--card);border:1px solid var(--line-strong);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-style:italic;color:var(--honey-deep);font-size:1.1rem}
+.flow .who{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--ink-mute)}
+.flow .who.her{color:var(--pom)}
+.flow h3{font-family:var(--font-body);font-size:1rem;font-weight:600;color:var(--ink);margin:2px 0 4px}
+.flow p{font-size:.9rem;color:var(--ink-soft);margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chips span{font-size:.75rem;padding:3px 10px;border-radius:999px;background:var(--card);border:1px solid var(--line);color:var(--ink-soft)}
+/* ---------- order card ---------- */
+.cardwrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;margin-top:22px;align-items:start}
+@media (max-width:700px){.cardwrap{grid-template-columns:1fr}}
+.order{background:#fff;border:1px solid var(--line-strong);border-radius:16px;padding:18px;box-shadow:0 18px 40px -26px rgba(36,28,22,.45);font-size:.86rem}
+.order .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:10px}
+.order .top b{font-family:var(--font-display);font-size:1.15rem;color:var(--ink);font-weight:500}
+.order .top span{font-size:.74rem;color:var(--ink-mute)}
+.order dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:0}
+.order dt{color:var(--ink-mute)}
+.order dd{margin:0;color:var(--ink);font-weight:500;min-width:0;overflow-wrap:anywhere}
+.order .ref{display:flex;gap:10px;align-items:center;margin-top:12px;padding:10px;border-radius:10px;background:var(--paper)}
+.order .ref i{width:44px;height:44px;border-radius:8px;flex:none;background:linear-gradient(135deg,#e9d2c3,#b9876a)}
+.order .paybox{margin-top:12px;padding:12px;border-radius:10px;border:1px dashed var(--honey);display:grid;gap:4px}
+.order .paybox b{font-family:var(--font-display);font-size:1.2rem;color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}
+.status{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
+.status.wait{background:color-mix(in srgb,var(--honey) 22%,transparent);color:var(--honey-deep)}
+.status.ok{background:color-mix(in srgb,var(--sage) 22%,transparent);color:var(--sage)}
+.order .btns{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.order .btns span{flex:1;text-align:center;font-size:.78rem;font-weight:600;padding:.6em .8em;border-radius:999px;border:1px solid var(--line-strong);color:var(--ink);min-width:120px}
+.order .btns span.main{background:var(--pom);border-color:var(--pom);color:#F7EEDF}
+.explain{display:grid;gap:12px;font-size:.9rem;color:var(--ink-soft)}
+.explain b{color:var(--ink)}
+/* ---------- base vs plus ---------- */
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+@media (max-width:640px){.twocol{grid-template-columns:1fr}}
+.twocol>div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;display:grid;gap:8px;align-content:start;min-width:0}
+.twocol>div.plus{border-color:var(--honey)}
+.twocol h3{font-family:var(--font-display);font-size:1.1rem;font-weight:500;color:var(--ink);margin:0}
+.twocol ul{margin:0;padding-left:1.1em;font-size:.88rem;color:var(--ink-soft);display:grid;gap:5px}
+.lbl{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--honey-deep)}
+td small{display:block;font-weight:400;color:var(--ink-mute);font-size:.8rem;margin-top:3px;line-height:1.45}
+
+/* статусы оплаты */
+.ladder{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-top:22px}
+@media (max-width:640px){.ladder{grid-template-columns:1fr}}
+.ladder div{border-radius:12px;padding:14px 12px;border:1px solid var(--line);background:var(--card);display:grid;gap:4px;align-content:start;min-width:0}
+.ladder b{font-size:.9rem;color:var(--ink)}
+.ladder span{font-size:.78rem;color:var(--ink-mute);line-height:1.4}
+.ladder i{font-style:normal;font-size:1.1rem}
+.ladder .s1{border-top:4px solid #9C8F7D}.ladder .s2{border-top:4px solid var(--honey)}.ladder .s3{border-top:4px solid #3F7FB5}.ladder .s4{border-top:4px solid var(--sage)}.ladder .s5{border-top:4px solid var(--ink)}
+.list{margin-top:22px;border:1px solid var(--line-strong);border-radius:14px;overflow:hidden;background:#fff}
+.list .row{display:grid;grid-template-columns:70px minmax(0,1fr) auto;gap:10px;align-items:center;padding:12px 14px;border-bottom:1px solid var(--line);font-size:.86rem}
+.list .row:last-child{border-bottom:none}
+.list .row b{color:var(--ink)}
+.list .row small{display:block;color:var(--ink-mute)}
+.list .head{background:var(--paper);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--honey-deep);font-weight:600}
+.pill{font-size:.7rem;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.p-wait{background:color-mix(in srgb,var(--honey) 22%,transparent);color:var(--honey-deep)}
+.p-pre{background:#DCE9F5;color:#2E5F8A}
+.p-full{background:color-mix(in srgb,var(--sage) 24%,transparent);color:#46553A}
+.msg{background:#fff;border:1px solid var(--line);border-radius:14px 14px 14px 4px;padding:12px 14px;font-size:.86rem;color:var(--ink);max-width:44ch;box-shadow:0 8px 20px -16px rgba(36,28,22,.5)}
+.msg small{display:block;color:var(--ink-mute);font-size:.72rem;margin-bottom:4px}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="doc">
+    <p class="eyebrow">Для Эльвиры · «Мама дорогая»</p>
+    <h1>Как к вам будут приходить заказы</h1>
+    <div class="doc-meta">
+      <span>От: <b>Валерий</b> · WhatsApp <span class="sel">+7 962 744-57-58</span></span>
+      <span>Дата: <b>14 октября 2026</b></span>
+    </div>
+  </header>
+
+  <section>
+    <p class="eyebrow">Путь заказа</p>
+    <h2>От клиента до вашей кухни — без скриншотов в переписке</h2>
+    <ol class="flow">
+      <li><span class="n">1</span><div><span class="who">Клиент</span><h3>Заполняет заказ на сайте кнопками</h3><p>Повод и кому, дата и время, число гостей, бисквит, начинка, надпись или топпер, доставка. Прикрепляет фото понравившегося торта.</p><div class="chips"><span>день рождения → ребёнок → девочка</span><span>6 гостей → 900 г</span><span>ванильный бисквит</span><span>топпер</span></div></div></li>
+      <li><span class="n">2</span><div><span class="who">Сайт</span><h3>Сам считает вес и примерную цену, присваивает номер</h3><p>150 г на гостя по вашему правилу. Каждый заказ получает номер, например №0142 — по нему вы найдёте и заказ, и оплату.</p></div></li>
+      <li><span class="n">3</span><div><span class="who her">Вы</span><h3>Получаете карточку заказа в телефон</h3><p>В MAX или Telegram — с фото-референсом. Копия приходит на почту, чтобы ничего не потерялось. Пример карточки — ниже.</p></div></li>
+      <li><span class="n">4</span><div><span class="who her">Вы</span><h3>Подтверждаете заказ и уточняете детали</h3><p>Кнопка в карточке сразу открывает переписку с этим клиентом в WhatsApp.</p></div></li>
+      <li><span class="n">5</span><div><span class="who">Клиент</span><h3>Вносит предоплату сразу на ваш расчётный счёт</h3><p>По QR-коду или ссылке вашего банка. В назначении платежа — номер заказа: «Заказ №0142». Деньги идут напрямую вам, мы к ним доступа не имеем.</p></div></li>
+      <li><span class="n">6</span><div><span class="who her">Вы</span><h3>Видите оплату</h3><p>В приложении банка перевод подписан «Заказ №0142» — сразу понятно, чья это предоплата. Без поиска скриншотов в переписке.</p></div></li>
+    </ol>
+  </section>
+
+  <section>
+    <p class="eyebrow">Карточка заказа</p>
+    <h2>Всё о заказе на одном экране</h2>
+    <div class="cardwrap">
+      <div class="order" aria-label="Пример карточки заказа">
+        <div class="top"><b>Заказ №0142</b><span>14 окт, 18:42 · с сайта</span></div>
+        <dl>
+          <dt>Клиент</dt><dd>Виктория · +7 918 000-00-00</dd>
+          <dt>Когда</dt><dd>Сб, 15 ноября, к 13:00</dd>
+          <dt>Повод</dt><dd>День рождения · ребёнок · девочка, 5 лет</dd>
+          <dt>Гости</dt><dd>6 → около 900 г</dd>
+          <dt>Ярусы</dt><dd>1</dd>
+          <dt>Бисквит</dt><dd>ванильный</dd>
+          <dt>Начинка</dt><dd>клубника со сливками</dd>
+          <dt>Надпись</dt><dd>топпер «Алисе 5»</dd>
+          <dt>Пожелания</dt><dd>розовый с белым, без орехов</dd>
+          <dt>Получение</dt><dd>доставка · ул. Кирова, 12</dd>
+        </dl>
+        <div class="ref"><i aria-hidden="true"></i><span>Фото-референс от клиента · 1 файл</span></div>
+        <div class="paybox">
+          <span>Примерная сумма 2 700 ₽ · предоплата 50%</span>
+          <b>1 350 ₽</b>
+          <span><span class="status wait">ждём оплату</span> ссылка на оплату отправлена клиенту</span>
+        </div>
+        <div class="btns"><span class="main">Написать в WhatsApp</span><span>Позвонить</span></div>
+      </div>
+      <div class="explain">
+        <p><b>Дата и время сверху</b> — сразу видно, к какому дню готовить.</p>
+        <p><b>Вес уже посчитан</b> по 150 г на гостя, сумма — по вашим ценам за кг.</p>
+        <p><b>Бисквит, начинка, надпись или топпер</b> — выбраны кнопками, без переспрашиваний.</p>
+        <p><b>Фото-референс</b> приходит вместе с заказом.</p>
+        <p><b>Номер заказа</b> стоит и в карточке, и в переводе клиента — оплату не перепутать.</p>
+        <p class="note">Пример. Поля и порядок сделаем под вас — пропишите, что важно видеть первым.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Кто оплатил, кто нет</p>
+    <h2>У каждого заказа — свой статус и цвет</h2>
+    <p>Чтобы не путаться, каждый заказ проходит пять шагов. Статус виден в карточке и в общем списке, цвет подсказывает с одного взгляда.</p>
+    <div class="ladder">
+      <div class="s1"><i>🆕</i><b>Новый</b><span>заказ пришёл с сайта</span></div>
+      <div class="s2"><i>⏳</i><b>Ждём предоплату</b><span>клиенту ушла ссылка на оплату</span></div>
+      <div class="s3"><i>💳</i><b>Предоплата внесена</b><span>дата забронирована, остаток к выдаче</span></div>
+      <div class="s4"><i>✅</i><b>Оплачен полностью</b><span>остаток получен</span></div>
+      <div class="s5"><i>🎂</i><b>Выдан</b><span>заказ закрыт</span></div>
+    </div>
+    <h3 class="sub">Так выглядит список на неделю</h3>
+    <div class="list" aria-label="Пример списка заказов">
+      <div class="row head"><span>Когда</span><span>Заказ</span><span>Оплата</span></div>
+      <div class="row"><span><b>Сб 15.11</b><small>13:00</small></span><span><b>№0142 · Виктория</b><small>«Пьяный тортик», 0,9 кг · доставка</small></span><span class="pill p-pre">предоплата 1 350 из 2 700</span></div>
+      <div class="row"><span><b>Сб 15.11</b><small>16:00</small></span><span><b>№0147 · Залина</b><small>свадебный, 3 яруса · самовывоз</small></span><span class="pill p-full">оплачено 14 000</span></div>
+      <div class="row"><span><b>Вс 16.11</b><small>12:00</small></span><span><b>№0151 · Алан</b><small>«Наполеон», 1,5 кг</small></span><span class="pill p-wait">ждём предоплату</span></div>
+    </div>
+    <p class="note">Как ставится отметка «оплачено»: с онлайн-оплатой — сама, как только деньги пришли на ваш счёт. Без неё — вы нажимаете кнопку «Предоплата пришла» прямо в карточке заказа в MAX или Telegram, одно касание.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">Напоминания клиентам</p>
+    <h2>Клиент не забудет забрать и доплатить</h2>
+    <p>Сообщения уходят сами — вам не нужно писать каждому.</p>
+    <ol class="flow">
+      <li><span class="n">1</span><div><span class="who">Сразу после предоплаты</span><h3>Подтверждение</h3><div class="msg"><small>«Мама дорогая»</small>Виктория, предоплата 1 350 ₽ по заказу №0142 получена. Ваш торт будет готов в субботу, 15 ноября, к 13:00.</div></div></li>
+      <li><span class="n">2</span><div><span class="who">Накануне вечером</span><h3>Напоминание и остаток</h3><div class="msg"><small>«Мама дорогая»</small>Напоминаем: завтра к 13:00 ваш заказ №0142 будет готов. Остаток 1 350 ₽ — можно оплатить заранее по ссылке или при получении.</div></div></li>
+      <li><span class="n">3</span><div><span class="who">Если не пришёл через 2 часа</span><h3>Вежливый вопрос клиенту и сигнал вам</h3><div class="msg"><small>«Мама дорогая»</small>Ваш торт готов и ждёт вас с 13:00. Подскажите, когда сможете забрать?</div><p style="margin-top:8px">Вам в это же время: «Заказ №0142 не забрали, остаток 1 350 ₽ не оплачен».</p></div></li>
+      <li><span class="n">4</span><div><span class="who">Вам каждое утро</span><h3>Сводка дня</h3><p>«Сегодня 3 выдачи. Оплачено полностью — 1, ждём остаток — 2 (Виктория 1 350 ₽, Алан 2 900 ₽)».</p></div></li>
+    </ol>
+    <p class="note">Куда уходят напоминания: SMS — доходит до всех, около 4 ₽ за сообщение, оплачивается сервису рассылки по факту. Telegram и MAX — бесплатно, если клиент нажал «Получать уведомления» после заказа. WhatsApp — только через платный сервис-посредник с абонентской платой, тариф уточним.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">Что входит, что можно добавить</p>
+    <h2>Сайт за 30 000 ₽ и кабинет заказов</h2>
+    <div class="twocol">
+      <div>
+        <span class="lbl">Входит в 30 000 ₽</span>
+        <h3>Карточка заказа в телефон</h3>
+        <ul>
+          <li>Заказ кнопками, фото-референс, расчёт веса и цены</li>
+          <li>Карточка в MAX или Telegram и копия на почту</li>
+          <li>Номер заказа в карточке и в переводе</li>
+          <li>Предоплата по QR вашего банка — сразу на ваш счёт</li>
+          <li>Оплату сверяете по номеру в приложении банка</li>
+        </ul>
+      </div>
+      <div class="plus">
+        <span class="lbl">Дополнительно</span>
+        <h3>Кабинет заказов</h3>
+        <ul>
+          <li>Все заказы списком: на сегодня, на неделю, по имени</li>
+          <li>Статус и цвет у каждого: ждём предоплату, предоплата внесена, оплачен полностью, выдан</li>
+          <li>С онлайн-оплатой отметка «оплачено» ставится сама</li>
+          <li>Открывается с телефона, вход по паролю</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Дополнительные опции</p>
+    <h2>Что не входило в проект и сколько это стоит</h2>
+    <p>На встрече вы назвали несколько полезных идей сверх сайта. Каждая — это отдельная разработка: время, сервисы и поддержка. Считаем честно: часы работы по 1 200 ₽ плюс расходы. Подключаются по желанию, в любой момент после запуска.</p>
+    <div class="table-scroll">
+      <table class="packages">
+        <thead><tr><th>Опция</th><th>Что делаем</th><th>Работа</th><th>Стоимость</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Опция">Кабинет заказов</td><td data-label="Что делаем">Список заказов с датами, поиском и статусами, вход с телефона, база на сервере в России<small>Сервер для базы — 400 ₽ в месяц, с 2-го месяца</small></td><td data-label="Работа">10 ч</td><td data-label="Стоимость" class="price">12 000 ₽</td></tr>
+          <tr><td data-label="Опция">Онлайн-оплата с автоотметкой</td><td data-label="Что делаем">Подключаем интернет-эквайринг вашего банка: клиент платит по ссылке, в кабинете само появляется «оплачено»<small>Нужен кабинет заказов. Комиссию банка за эквайринг (обычно 1,5–3%) уточним в вашем банке</small></td><td data-label="Работа">4 ч</td><td data-label="Стоимость" class="price">4 800 ₽</td></tr>
+          <tr><td data-label="Опция">Калькуляция продуктов</td><td data-label="Что делаем">По вашим техкартам считает, сколько муки, сливок, ягод нужно на заказы недели, и даёт список закупки<small>Нужен кабинет заказов и ваши техкарты</small></td><td data-label="Работа">8 ч</td><td data-label="Стоимость" class="price">9 600 ₽</td></tr>
+          <tr><td data-label="Опция">Меню кафе по QR</td><td data-label="Что делаем">Гость сканирует QR на столе, видит витрину «на сегодня» и заказывает с телефона, вам приходит уведомление<small>Печать табличек на столы — около 500 ₽</small></td><td data-label="Работа">6 ч</td><td data-label="Стоимость" class="price">7 700 ₽</td></tr>
+          <tr><td data-label="Опция">Страница для Instagram</td><td data-label="Что делаем">Одна страница для ссылки в профиле: кто вы, отзывы, кнопки заказа и мессенджеров</td><td data-label="Работа">3 ч</td><td data-label="Стоимость" class="price">3 600 ₽</td></tr>
+          <tr><td data-label="Опция">Видео «Как оформить заказ»</td><td data-label="Что делаем">Снимаем у вас и монтируем ролик 1–2 минуты. Если запишете сами — встроим бесплатно</td><td data-label="Работа">3 ч</td><td data-label="Стоимость" class="price">3 600 ₽</td></tr>
+          <tr><td data-label="Опция">Кнопки оплаты в карточке</td><td data-label="Что делаем">В карточке заказа в MAX/Telegram кнопки «Предоплата пришла», «Оплачено полностью», «Выдан» — статус меняется одним касанием<small>Простой вариант без кабинета. В кабинет входит</small></td><td data-label="Работа">6 ч</td><td data-label="Стоимость" class="price">7 200 ₽</td></tr>
+          <tr><td data-label="Опция">Автонапоминания клиентам</td><td data-label="Что делаем">Подтверждение предоплаты, напоминание накануне с остатком, вопрос «когда заберёте», утренняя сводка вам<small>SMS — около 4 ₽ за сообщение сервису рассылки. Telegram и MAX — бесплатно</small></td><td data-label="Работа">8 ч</td><td data-label="Стоимость" class="price">9 600 ₽</td></tr>
+          <tr class="recommended"><td data-label="Опция">Пакет «Без путаницы»<span class="tag-rec">Выгоднее</span></td><td data-label="Что делаем">Кабинет заказов со статусами + онлайн-оплата с автоотметкой + автонапоминания<small>По отдельности 26 400 ₽</small></td><td data-label="Работа">22 ч</td><td data-label="Стоимость" class="price">23 900 ₽</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Предлагаем подключать кабинет в декабре, когда сайт поработает месяц и будет видно, сколько заказов приходит. Цены действуют до 31 декабря 2026 года.</p>
+  </section>
+
+  <footer class="doc">
+    <span>Рабочий материал для разговора, не публичная оферта.</span>
+    <span>Опции оформляются отдельным заказом к договору.</span>
+  </footer>
+</div>
+
+</body>
+</html>
