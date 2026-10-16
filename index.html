@@ -647,6 +647,11 @@ a{text-decoration:none}
 .q-nav{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:20px;flex-wrap:wrap}
 .q-back{background:none;border:none;color:var(--ink-mute);font:inherit;font-size:.9rem;cursor:pointer;padding:6px 0}
 .q-back:hover{color:var(--ink)}
+.q-sub{margin-top:20px;padding-top:18px;border-top:1px dashed var(--line-strong);border-radius:0;display:grid;gap:12px}
+.q-sub .legend{font-size:.95rem}
+.q-age-row{display:flex;align-items:flex-end;gap:14px;flex-wrap:wrap}
+.q-age-row .field{max-width:220px;margin:0}
+#qKid.need .chip-in span{border-color:var(--pom);color:var(--pom)}
 .q-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
 .q-back--top{border:1px solid var(--line-strong);border-radius:999px;padding:.45em 1em;color:var(--ink);font-weight:600}
 .q-back--top:hover{border-color:var(--ink)}
@@ -873,11 +878,31 @@ a{text-decoration:none}
         <h3>Что празднуете?</h3>
         <div class="radio-row q-opts">
           <label class="chip-in"><input type="radio" name="occasion" value="День рождения"><span>День рождения</span></label>
-          <label class="chip-in"><input type="radio" name="occasion" value="Детский праздник"><span>Детский праздник</span></label>
+          <label class="chip-in"><input type="radio" name="occasion" value="Юбилей"><span>Юбилей</span></label>
+          <label class="chip-in"><input type="radio" name="occasion" value="Годик / крестины"><span>Годик / крестины</span></label>
           <label class="chip-in"><input type="radio" name="occasion" value="Новый год"><span>Новый год</span></label>
           <label class="chip-in"><input type="radio" name="occasion" value="Свадьба"><span>Свадьба</span></label>
           <label class="chip-in"><input type="radio" name="occasion" value="Корпоратив"><span>Корпоратив</span></label>
           <label class="chip-in"><input type="radio" name="occasion" value="Без повода"><span>Просто к столу</span></label>
+        </div>
+        <div class="q-sub" id="qWho" hidden>
+          <span class="legend">Кому день рождения?</span>
+          <div class="radio-row">
+            <label class="chip-in"><input type="radio" name="qwho" value="Мужчине"><span>Мужчине</span></label>
+            <label class="chip-in"><input type="radio" name="qwho" value="Женщине"><span>Женщине</span></label>
+            <label class="chip-in"><input type="radio" name="qwho" value="Ребёнку"><span>Ребёнку</span></label>
+          </div>
+          <div class="radio-row" id="qKid" hidden>
+            <label class="chip-in"><input type="radio" name="qkid" value="мальчику"><span>Мальчику</span></label>
+            <label class="chip-in"><input type="radio" name="qkid" value="девочке"><span>Девочке</span></label>
+          </div>
+          <div class="q-age-row" id="qAgeRow" hidden>
+            <div class="field">
+              <label for="q-age">Сколько исполняется <span class="hint">необязательно</span></label>
+              <input type="number" id="q-age" min="1" max="120" inputmode="numeric" placeholder="например, 5">
+            </div>
+            <button type="button" class="btn btn--honey" id="qNext1">Дальше: дата →</button>
+          </div>
         </div>
       </div>
       <div class="q-step" data-step="2" hidden>
@@ -1756,18 +1781,32 @@ document.getElementById('year').textContent=new Date().getFullYear();
   const steps=[...f.querySelectorAll('.q-step')],marks=[...f.querySelectorAll('.q-steps li')];
   const done=document.getElementById('quickDone'),err=document.getElementById('q-err');
   const st={occasion:'',date:'',label:''};
-  function go(n){steps.forEach(x=>x.hidden=+x.dataset.step!==n);marks.forEach((m,i)=>{m.classList.toggle('on',i<n);m.classList.toggle('done',i<n-1)});document.getElementById('qSum2').textContent=st.occasion?'Повод: '+st.occasion:'';
+  function go(n){steps.forEach(x=>x.hidden=+x.dataset.step!==n);marks.forEach((m,i)=>{m.classList.toggle('on',i<n);m.classList.toggle('done',i<n-1)});document.getElementById('qSum2').textContent=st.occasion?'Повод: '+occLabel():'';
     const top=f.getBoundingClientRect().top;if(top<0||top>innerHeight*.6)f.scrollIntoView({behavior:smooth,block:'start'});}
   marks.forEach((m,i)=>m.addEventListener('click',()=>{if(m.classList.contains('done'))go(i+1)}));
   document.getElementById('qEdit').addEventListener('click',()=>{done.hidden=true;f.querySelector('.q-steps').hidden=false;go(3)});
-  f.querySelectorAll('[name=occasion]').forEach(r=>r.addEventListener('click',()=>{st.occasion=r.value;setTimeout(()=>{go(2);const g=document.getElementById('calGrid');if(r.value==='Новый год'&&g.scrollWidth>g.clientWidth)g.scrollLeft=g.scrollWidth},180)}));
+  const who=document.getElementById('qWho'),kidRow=document.getElementById('qKid'),ageRow=document.getElementById('qAgeRow');
+  const qv=n=>{const x=f.querySelector('[name='+n+']:checked');return x?x.value:''};
+  function occLabel(){let o=st.occasion;if(o!=='День рождения'||!qv('qwho'))return o;
+    o+=' · '+(qv('qwho')==='Ребёнку'?('ребёнку'+(qv('qkid')?', '+qv('qkid'):'')):qv('qwho').toLowerCase());
+    const a=document.getElementById('q-age').value.trim();if(a)o+=', исполняется '+a;return o}
+  function syncBrief(){const b=document.getElementById('briefForm');if(!b)return;
+    const set=(n,v)=>{const r=v&&b.querySelector('[name='+n+'][value="'+v+'"]');if(r){r.checked=true;r.dispatchEvent(new Event('change',{bubbles:true}))}};
+    set('occasion',st.occasion);set('who',qv('qwho'));set('kid',qv('qkid'));const a=document.getElementById('q-age').value.trim();if(a&&b.elements.age)b.elements.age.value=a}
+  function toDate(){syncBrief();go(2);const g=document.getElementById('calGrid');if(st.occasion==='Новый год'&&g.scrollWidth>g.clientWidth)g.scrollLeft=g.scrollWidth}
+  f.querySelectorAll('[name=occasion]').forEach(r=>r.addEventListener('click',()=>{st.occasion=r.value;
+    if(r.value==='День рождения'){who.hidden=false;return}
+    who.hidden=true;setTimeout(toDate,180)}));
+  f.querySelectorAll('[name=qwho]').forEach(r=>r.addEventListener('click',()=>{kidRow.hidden=r.value!=='Ребёнку';ageRow.hidden=false}));
+  document.getElementById('qNext1').addEventListener('click',()=>{if(qv('qwho')==='Ребёнку'&&!qv('qkid')){kidRow.classList.add('need');return}kidRow.classList.remove('need');toDate()});
+  f.querySelectorAll('[name=qkid]').forEach(r=>r.addEventListener('click',()=>kidRow.classList.remove('need')));
   f.querySelectorAll('.q-back').forEach(b=>b.addEventListener('click',()=>{const n=+b.closest('.q-step').dataset.step;go(n-1)}));
   window.pickDate=function(iso,label){
     st.date=iso;st.label=label;
     f.querySelectorAll('.cal-day.sel').forEach(x=>x.classList.remove('sel'));
     const btn=[...f.querySelectorAll('.cal-day')].find(x=>(x.getAttribute('onclick')||'').includes(iso));if(btn)btn.classList.add('sel');
     const bd=document.getElementById('bf-date');if(bd)bd.value=iso;
-    document.getElementById('qSum').textContent='Повод: '+st.occasion+' · Дата: '+label;
+    document.getElementById('qSum').textContent='Повод: '+occLabel()+' · Дата: '+label;
     go(3);setTimeout(()=>document.getElementById('q-phone').focus({preventScroll:true}),250);
   };
   f.addEventListener('submit',e=>{
@@ -1776,7 +1815,7 @@ document.getElementById('year').textContent=new Date().getFullYear();
     if(!ph||!f.elements.consent.checked){err.classList.add('show');return}
     err.classList.remove('show');
     const no='№'+String(1000+Math.floor(Math.random()*9000));
-    const text=['Заказ '+no+' с сайта «Мама дорогая»','','Повод: '+st.occasion,'Дата: '+st.label,'','Телефон: '+ph,'Связь: '+f.elements.channel.value,'','Прошу прислать цену и свободное время'].join('\n');
+    const text=['Заказ '+no+' с сайта «Мама дорогая»','','Повод: '+occLabel(),'Дата: '+st.label,'','Телефон: '+ph,'Связь: '+f.elements.channel.value,'','Прошу прислать цену и свободное время'].join('\n');
     document.getElementById('qNo').textContent='Заказ '+no;
     document.getElementById('qSummary').textContent=text;
     document.getElementById('qWa').href='https://wa.me/79188290322?text='+encodeURIComponent(text);
