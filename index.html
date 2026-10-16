@@ -579,6 +579,13 @@ fieldset .legend{display:block;margin-bottom:9px}
 .calc-out b{font-family:var(--font-display);font-size:1.25rem;color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}
 .calc-out span{font-size:.82rem;color:var(--ink-mute)}
 .ref-prev{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.file-hidden{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;clip:rect(0 0 0 0)}
+.file-btn{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;padding:.75em 1.2em;border:1.5px dashed var(--honey-deep);border-radius:999px;color:var(--ink);font-weight:600;font-size:.92rem;cursor:pointer;background:var(--paper);transition:background .15s ease}
+.file-btn:hover{background:var(--paper-2)}
+.file-btn svg{width:20px;height:20px;color:var(--honey-deep);flex:none}
+.file-hidden:focus-visible+.file-btn{outline:2px solid var(--honey-deep);outline-offset:2px}
+.file-note{font-size:.8rem;color:var(--ink-mute)}
+.photo-note{margin-top:12px;padding:12px 14px;border-radius:10px;background:color-mix(in srgb,var(--honey) 14%,transparent);font-size:.88rem;color:var(--ink-soft)}
 .ref-prev img{width:64px;height:64px;object-fit:cover;border-radius:8px;border:1px solid var(--line)}
 .order-no{display:inline-block;font-family:var(--font-display);font-size:1.4rem;color:var(--pom);margin-bottom:6px}
 
@@ -1293,8 +1300,10 @@ a{text-decoration:none}
 
           <div class="field full">
             <label for="bf-photo">Фото понравившегося торта <span class="hint">необязательно, до 3 фото</span></label>
-            <input type="file" id="bf-photo" name="photo" accept="image/*" multiple>
+            <input type="file" id="bf-photo" name="photo" accept="image/*" multiple class="file-hidden">
+            <label class="file-btn" for="bf-photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><span id="bf-photo-lbl">Прикрепить фото</span></label>
             <div class="ref-prev" id="bf-prev"></div>
+            <small class="file-note">Не прикрепляется? Отправьте фото в&nbsp;WhatsApp вместе с&nbsp;заказом</small>
           </div>
           <div class="field full">
             <label for="bf-notes">Пожелания по дизайну и аллергии</label>
@@ -1353,6 +1362,7 @@ a{text-decoration:none}
         <span class="order-no" id="briefNo"></span><h3>Заказ принят</h3>
         <p>В рабочей версии карточка этого заказа с фото уже пришла бы Эльвире. Ниже - что она увидит. Можно сразу отправить заказ в WhatsApp</p>
         <div class="brief-summary" id="briefSummary"></div>
+        <p class="photo-note" id="bfPhotoNote" hidden>Фото прикрепите в&nbsp;WhatsApp сразу после текста заказа: ссылка передаёт только текст. В рабочей версии фото придут Эльвире вместе с&nbsp;заказом</p>
         <div class="actions">
           <a class="btn btn--honey" id="briefWa" href="#" target="_blank" rel="noopener">Открыть в WhatsApp</a>
           <button class="btn btn--ghost" id="briefCopy" type="button">Скопировать текст</button>
@@ -1688,7 +1698,9 @@ chips.forEach(chip=>chip.addEventListener('click',()=>{
   f.addEventListener('change',calc);f.addEventListener('input',e=>{if(e.target.name==='guests')calc()});
   f.elements.guests.addEventListener('input',calc);f.elements.product.addEventListener('change',calc);
   const prev=document.getElementById('bf-prev');
-  f.elements.photo.addEventListener('change',()=>{prev.innerHTML='';[...f.elements.photo.files].slice(0,3).forEach(file=>{const im=document.createElement('img');im.alt='Фото-референс';im.src=URL.createObjectURL(file);prev.appendChild(im)})});
+  f.elements.photo.addEventListener('change',()=>{prev.innerHTML='';const all=[...f.elements.photo.files];all.slice(0,3).forEach(file=>{const im=document.createElement('img');im.alt='Фото-референс';im.src=URL.createObjectURL(file);prev.appendChild(im)});
+    document.getElementById('bf-photo-lbl').textContent=all.length?'Выбрано фото: '+Math.min(all.length,3)+' · заменить':'Прикрепить фото';
+    if(all.length>3)toast('Можно до 3 фото: взяли первые три');});
   let orderNo='';
   function build(){
     const fillings=[...f.querySelectorAll('[name=filling]:checked')].map(c=>c.value);
@@ -1705,7 +1717,7 @@ chips.forEach(chip=>chip.addEventListener('click',()=>{
     if(val('sponge'))L.push('Бисквит: '+val('sponge'));
     if(fillings.length)L.push('Начинка: '+fillings.join(', '));
     if(val('inscr')!=='Без надписи')L.push('Надпись: '+val('inscr').toLowerCase()+(val('cake_text')?' «'+val('cake_text').replace(/[«»"]/g,'')+'»':''));
-    const ph=f.elements.photo.files.length;if(ph)L.push('Фото-референс: '+ph+' шт.');
+    const ph=f.elements.photo.files.length;if(ph)L.push('Фото-референс: '+Math.min(ph,3)+' шт., пришлю следующим сообщением');
     if(val('notes'))L.push('Пожелания: '+val('notes'));
     L.push('Получение: '+val('delivery')+(val('delivery')==='Доставка'?' ('+f.elements.zone.selectedOptions[0].text.split(' - ')[0]+')'+(val('address')?' - '+val('address'):''):''));
     const q=quote();if(q)L.push('Сумма примерно: '+rub(q.sum)+' · предоплата 50% - '+rub(q.pre));
@@ -1726,7 +1738,7 @@ chips.forEach(chip=>chip.addEventListener('click',()=>{
     const text=build();
     document.getElementById('briefSummary').textContent=text;
     document.getElementById('briefWa').href='https://wa.me/79188290322?text='+encodeURIComponent(text);
-    f.style.display='none';done.classList.add('show');
+    document.getElementById('bfPhotoNote').hidden=!f.elements.photo.files.length;f.style.display='none';done.classList.add('show');
     done.scrollIntoView({behavior:smooth,block:'start'});
     toast('Заказ '+orderNo+' принят');
   });
