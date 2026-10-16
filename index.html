@@ -321,6 +321,17 @@ body.menu-open .scrim{opacity:1;pointer-events:auto}
 .review footer{border-top:1px solid var(--line);padding-top:12px;font-size:.85rem}
 .review footer b{font-family:var(--font-display);font-weight:500;color:var(--ink);font-size:1rem;display:block}
 .review footer span{color:var(--ink-mute)}
+.reviews-grid{perspective:1100px}
+.review{position:relative;transform-origin:50% 100%;transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s ease,border-color .4s ease,opacity .4s ease;-webkit-tap-highlight-color:transparent}
+.review.lift,.review:focus-visible{transform:translateY(-12px) scale(1.04) rotateX(4deg);box-shadow:0 3px 8px rgba(36,28,22,.08),0 38px 64px -26px rgba(36,28,22,.5);border-color:color-mix(in srgb,var(--honey) 60%,transparent);z-index:2;outline:none}
+.review.lift .q,.review:focus-visible .q{color:var(--pom)}
+.reviews-grid:has(.review.lift) .review:not(.lift){opacity:.72;transform:scale(.97)}
+@media (hover:hover){
+  .review:hover{transform:translateY(-12px) scale(1.04) rotateX(4deg);box-shadow:0 3px 8px rgba(36,28,22,.08),0 38px 64px -26px rgba(36,28,22,.5);border-color:color-mix(in srgb,var(--honey) 60%,transparent);z-index:2}
+  .review:hover .q{color:var(--pom)}
+  .reviews-grid:has(.review:hover) .review:not(:hover){opacity:.72;transform:scale(.97)}
+}
+@media (prefers-reduced-motion:reduce){.review,.review:hover,.review.lift,.reviews-grid .review:not(.lift){transform:none!important;transition:box-shadow .2s ease}}
 .reviews-src{margin-top:22px;font-size:.84rem;color:var(--ink-mute)}
 
 /* ---------- trust ---------- */
@@ -1834,6 +1845,13 @@ document.getElementById('year').textContent=new Date().getFullYear();
     steps.forEach(x=>x.hidden=true);f.querySelector('.q-steps').hidden=true;done.hidden=false;
     toast('Заказ '+no+' готов к отправке');
   });
+})();
+
+/* ---------- отзывы: карточка выходит вперёд по касанию ---------- */
+(function(){
+  const rs=[...document.querySelectorAll('.review')];if(!rs.length)return;
+  rs.forEach(r=>{r.tabIndex=0;r.addEventListener('click',e=>{e.stopPropagation();const on=!r.classList.contains('lift');rs.forEach(x=>x.classList.remove('lift'));if(on&&!matchMedia('(hover:hover)').matches)r.classList.add('lift')})});
+  document.addEventListener('click',()=>rs.forEach(x=>x.classList.remove('lift')));
 })();
 
 /* ---------- плавающая кнопка связи ---------- */
